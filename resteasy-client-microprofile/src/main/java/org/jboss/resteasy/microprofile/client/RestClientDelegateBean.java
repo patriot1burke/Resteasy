@@ -97,12 +97,15 @@ public class RestClientDelegateBean implements Bean<Object>, PassivationCapable 
 
     private final Optional<String> baseUri;
 
-    RestClientDelegateBean(final Class<?> proxyType, final BeanManager beanManager, final Optional<String> baseUri) {
+    private final Optional<String> configKey;
+
+    RestClientDelegateBean(final Class<?> proxyType, final BeanManager beanManager, final Optional<String> baseUri, final Optional<String> configKey) {
         this.proxyType = proxyType;
         this.beanManager = beanManager;
         this.config = ConfigProvider.getConfig();
         this.scope = this.resolveScope();
         this.baseUri = baseUri;
+        this.configKey = configKey;
     }
 
     @Override
@@ -272,7 +275,9 @@ public class RestClientDelegateBean implements Bean<Object>, PassivationCapable 
     }
 
     private <T> Optional<T> getOptionalProperty(String propertyFormat, Class<T> type) {
-        return config.getOptionalValue(String.format(propertyFormat, proxyType.getName()), type);
+        Optional<T> value = config.getOptionalValue(String.format(propertyFormat, proxyType.getName()), type);
+        if (value.isPresent() || !configKey.isPresent()) return value;
+        return config.getOptionalValue(String.format(propertyFormat, configKey.get()), type);
     }
 
     private URL urlFromString(Optional<String> baseUrlFromConfig, String urlString) {
