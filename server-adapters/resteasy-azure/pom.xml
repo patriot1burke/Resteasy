@@ -5,20 +5,14 @@
         <artifactId>resteasy-jaxrs-all</artifactId>
         <version>4.1.0-SNAPSHOT</version>
     </parent>
-    <name>RESTEasy Http Adapter Plugins</name>
+    <name>RESTEasy Azure Plugins</name>
     <description/>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>resteasy-http-adapter-pom</artifactId>
+    <artifactId>resteasy-azure-pom</artifactId>
     <packaging>pom</packaging>
 
     <modules>
-        <module>resteasy-jdk-http</module>
-        <module>resteasy-netty4</module>
-        <module>resteasy-netty4-cdi</module>
-        <module>resteasy-undertow</module>
-        <module>resteasy-undertow-spring</module>
-        <module>resteasy-vertx</module>
-        <module>resteasy-azure</module>
+        <module>resteasy-azure-functions</module>
     </modules>
 </project>

@@ -1,0 +1,17 @@
+{
+  "scriptFile" : "../resteasy-azure-functions-4.1.0-SNAPSHOT.jar",
+  "entryPoint" : "org.resteasy.azure.functions.Function.run",
+  "bindings" : [ {
+    "type" : "httpTrigger",
+    "direction" : "in",
+    "name" : "req",
+    "route" : "{*path}",
+    "methods" : [ "GET", "POST" ],
+    "dataType" : "binary",
+    "authLevel" : "ANONYMOUS"
+  }, {
+    "type" : "http",
+    "direction" : "out",
+    "name" : "$return"
+  } ]
+}
