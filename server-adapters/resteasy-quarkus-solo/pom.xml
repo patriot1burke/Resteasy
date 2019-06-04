@@ -5,21 +5,15 @@
         <artifactId>resteasy-jaxrs-all</artifactId>
         <version>4.1.0-SNAPSHOT</version>
     </parent>
-    <name>RESTEasy Http Adapter Plugins</name>
+    <name>Quarkus RESTEasy Solo POM</name>
     <description/>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>resteasy-http-adapter-pom</artifactId>
+    <artifactId>resteasy-quarkus-solo-pom</artifactId>
     <packaging>pom</packaging>
 
     <modules>
-        <module>resteasy-jdk-http</module>
-        <module>resteasy-netty4</module>
-        <module>resteasy-netty4-cdi</module>
-        <module>resteasy-undertow</module>
-        <module>resteasy-undertow-spring</module>
-        <module>resteasy-vertx</module>
-        <module>resteasy-azure</module>
-        <module>resteasy-quarkus-solo</module>
+        <module>runtime</module>
+        <module>deployment</module>
     </modules>
 </project>

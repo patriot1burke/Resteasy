@@ -237,11 +237,20 @@ public class NettyJaxrsServer implements EmbeddedJaxrsServer
                deployment.getProviderFactory(), domain);
    }
 
+   public void setEventLoopGroup(EventLoopGroup eventLoopGroup) {
+      this.eventLoopGroup = eventLoopGroup;
+   }
+
+   public void setEventExecutor(EventLoopGroup eventExecutor) {
+      this.eventExecutor = eventExecutor;
+   }
+
    @SuppressWarnings("unchecked")
    @Override
    public void start() {
-      eventLoopGroup = new NioEventLoopGroup(ioWorkerCount);
-      eventExecutor = new NioEventLoopGroup(executorThreadCount);
+      if (eventLoopGroup == null) eventLoopGroup = new NioEventLoopGroup(ioWorkerCount);
+      if (eventExecutor == null) eventExecutor = new NioEventLoopGroup(executorThreadCount);
+
       deployment.start();
       // dynamically set the root path (the user can rewrite it by calling setRootResourcePath)
       if (deployment.getApplication() != null) {

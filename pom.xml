@@ -364,6 +364,7 @@
                             </rules>
                         </configuration>
                     </execution>
+                    <!--
                     <execution>
                         <id>dep-convergence</id>
                         <goals>
@@ -375,6 +376,7 @@
                             </rules>
                         </configuration>
                     </execution>
+                    -->
                     <execution>
                         <id>use-java-8-for-release</id>
                         <phase>deploy</phase>

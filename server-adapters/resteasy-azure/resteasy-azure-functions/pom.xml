@@ -194,7 +194,7 @@
                                 <resource>
                                     <directory>${project.basedir}</directory>
                                     <includes>
-                                        <include>HttpTrigger-Java/*</include>
+                                        <include><HttpTrigger-Java/></include>
                                     </includes>
                                 </resource>
                             </resources>
