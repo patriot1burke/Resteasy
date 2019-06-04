@@ -1,6 +1,8 @@
 package org.jboss.resteasy.quarkus.deployment;
 
 import io.quarkus.arc.deployment.BeanContainerBuildItem;
+import io.quarkus.arc.deployment.UnremovableBeanBuildItem;
+import io.quarkus.deployment.annotations.BuildProducer;
 import io.quarkus.deployment.annotations.BuildStep;
 import io.quarkus.deployment.annotations.ExecutionTime;
 import io.quarkus.deployment.annotations.Record;
@@ -15,6 +17,11 @@ public class ResteasySoloProcessor {
     @BuildStep(providesCapabilities = "org.jboss.resteasy.resteasy-solo")
     FeatureBuildItem featureBuildItem() {
         return new FeatureBuildItem("resteasy-solo");
+    }
+
+    @BuildStep
+    public void registerUnremovable(BuildProducer<UnremovableBeanBuildItem> unremovableBeans) {
+        unremovableBeans.produce(new UnremovableBeanBuildItem(new UnremovableBeanBuildItem.BeanClassNameExclusion("io.netty.channel.EventLoopGroup")));
     }
 
     @BuildStep

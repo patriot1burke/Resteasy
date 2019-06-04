@@ -6,12 +6,23 @@ import io.quarkus.netty.BossGroup;
 import io.quarkus.runtime.annotations.Template;
 import org.jboss.logging.Logger;
 
+import javax.inject.Inject;
 import java.lang.annotation.Annotation;
 
 @Template
 public class ResteasySoloTemplate {
     private static final Logger log = Logger.getLogger(ResteasySoloTemplate.class);
-    public static void start(final BeanContainer beanContainer) {
+
+    /*
+    @Inject
+    EventLoopGroup work;
+
+    @Inject
+    @BossGroup
+    EventLoopGroup boss;
+     */
+
+    public void start(BeanContainer beanContainer) {
         log.info("STARTING RESTEASY SOLO");
         EventLoopGroup work = beanContainer.instance(EventLoopGroup.class);
         BossGroup bossAnnotation = new BossGroup() {
